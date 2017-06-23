@@ -1768,9 +1768,9 @@ function optimizeInSuite () {
 
       result = db._query(mixedQuery2, bindVars);
       extra = result.getExtra();
+      assertEqual(result.count(), 1000);
       // We have only 10 valid elements in the array.
       assertEqual(extra.stats.filtered, 90);
-      assertEqual(result.count(), 1000);
 
       // if the rule is disabled we expect to do way more filtering
       var noOpt  = { optimizer: { rules: [ "-all" ] } };
